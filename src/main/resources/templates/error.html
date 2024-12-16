@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! Página no encontrada</title>
+    <link rel="stylesheet" th:href="@{/css/error-style.css}">
+</head>
+<body>
+<div class="background"></div>
+<div class="container">
+    <h1>404</h1>
+    <p>Oh no, parece que te has perdido... <br> La página que buscas no está disponible.</p>
+    <a th:href="@{/login}">Volver al inicio</a>
+</div>
+</body>
+</html>

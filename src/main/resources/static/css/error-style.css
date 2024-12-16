@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #FFB547, #FF6F61);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.container h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: fadeIn 2s;
+}
+
+.container p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.container a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.2rem;
+    background: #FF6F61;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container a:hover {
+    background: #ff8261;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('https://source.unsplash.com/1600x900/?travel') no-repeat center center/cover;
+    filter: blur(8px) brightness(0.7);
+}

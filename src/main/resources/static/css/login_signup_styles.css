@@ -1,0 +1,83 @@
+/* Estilos globales */
+body {
+    background-image: url('../img/hot-air-balloons-login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor del formulario */
+.login-container {
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px; /* Aumentar ancho máximo del formulario */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensaje de error */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Encabezado */
+h2 {
+    font-family: helvetica, serif;
+    font-weight: bold;
+    font-style: revert;
+    text-align: center;
+}
+
+/* Campos de entrada y botón */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="submit"],
+select {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 12px; /* Más espacio interno */
+    margin: 12px 0; /* Más espacio entre los campos */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding en el ancho */
+    font-size: 16px; /* Tamaño de texto más grande */
+}
+
+/* Botón de enviar */
+input[type="submit"] {
+    background-color: #007bff; /* Azul */
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Enlace */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

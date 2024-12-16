@@ -9,8 +9,8 @@ public class RegistrationController {
     @GetMapping("/login")
     String login() {return "login";}
 
-    @GetMapping("/register")
-    String register() {return "register";}
+    @GetMapping("/signup")
+    String register() {return "signup";}
 
 
 

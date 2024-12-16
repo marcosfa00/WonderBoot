@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign-Up page WonderBoot</title>
+    <link rel="stylesheet" th:href="@{/css/login_signup_styles.css}">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Display error message if credentials are incorrect -->
+        <div th:if="${param.error}" class="error-message">The Username or Password are incorrect</div>
+        <!-- Login form -->
+        <h2>REGISTRATION</h2>
+        <form th:action="@{/signup}" method="post">
+            <input id="username" type="text" name="username" placeholder="Username" required />
+            <input id="name" type="text" name="name" placeholder="Name" required />
+            <input id="surname" type="text" name="surname" placeholder="Surname" required />
+            <select name="country" id="country">
+                <option value="RestTemplate">RestTemplate</option>
+            </select>
+            <input type="email" name="email" id="email" placeholder="Email" required />
+            <input id="password" type="password" name="password" placeholder="Password" required />
+            <input id="password2" type="password" name="password2" placeholder="Repeat Password" required />
+            <input type="date" name="date" id="date">
+            <input type="submit" value="Register">
+            <a th:href="@{/login}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

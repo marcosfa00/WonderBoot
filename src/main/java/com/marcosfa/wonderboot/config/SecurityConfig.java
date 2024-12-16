@@ -10,8 +10,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(auth -> auth.requestMatchers("actuator/prometheus").permitAll()
-                        .requestMatchers("/register").permitAll()
+        return http.authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/css/**").permitAll()
+                        .requestMatchers("/img/**").permitAll()
+                        .requestMatchers("actuator/prometheus").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/signup").permitAll()
                                         .anyRequest().authenticated())
                 .formLogin(security -> security.loginPage("/login").permitAll())
                 .build();

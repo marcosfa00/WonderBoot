@@ -2,16 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Log-In</title>
+    <title>Log-In page WonderBoot</title>
+    <link rel="stylesheet" th:href="@{/css/login_signup_styles.css}">
 </head>
 <body>
-<div th:if="${param.error}">El usuario o la contraseña son incorrectas</div>
-<form th:action="@{/login}" method="post">
-    <input id="username" type="text" name="username" placeholder="Username" required />
-    <input id="password" type="password" name="password" placeholder="Password" required />
-    <input type="submit" value="Log-in">
-    <a th:href="@{/register}">Crear cuenta</a>
-</form>
-
+<div class="login-container">
+    <!-- Display error message if credentials are incorrect -->
+    <div th:if="${param.error}" class="error-message">The Username or Password are incorrect</div>
+    <h2>WELCOME TO WONDERBOOT</h2>
+    <!-- Login form -->
+    <form th:action="@{/login}" method="post">
+        <input id="username" type="text" name="username" placeholder="Username" required />
+        <input id="password" type="password" name="password" placeholder="Password" required />
+        <input type="submit" value="Log-in">
+        <a th:href="@{/signup}">Sign Up</a>
+    </form>
+</div>
 </body>
 </html>

@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegistrationController {
-    private final PasswordEncoder passwordEncoder;
-    private final WonderbootUserRepository wonderbootUserRepository;
+    private final RegistrationService registrationService;
 
-    RegistrationController(PasswordEncoder passwordEncoder, WonderbootUserRepository wonderbootUserRepository) {
-        this.passwordEncoder = passwordEncoder;
-        this.wonderbootUserRepository = wonderbootUserRepository;
+    RegistrationController(RegistrationService registrationService) {
+        this.registrationService = registrationService;
     }
 
     @GetMapping("/login")
@@ -31,17 +29,7 @@ public class RegistrationController {
 
     @PostMapping("/signup")// @Valid @ModelAttribute("registrationUser") , final BindingResult bindingResult
     public String signup( @Valid @ModelAttribute("registrationUser") final RegistrationUserDTO registrationUser) {
-       String encodedPassword = passwordEncoder.encode(registrationUser.getPassword());
-        WonderbootUser newUser = new WonderbootUser(
-                registrationUser.getUsername(),
-                registrationUser.getName(),
-                registrationUser.getSurname(),
-                registrationUser.getEmail(),
-                encodedPassword,
-                registrationUser.getDateOfBirth());
-        wonderbootUserRepository.save(newUser);
-
-
+        registrationService.RegisterUser(registrationUser);
         return "redirect:/login";
     }
 

@@ -11,17 +11,18 @@
         <div th:if="${param.error}" class="error-message">The Username or Password are incorrect</div>
         <!-- Login form -->
         <h2>REGISTRATION</h2>
-        <form th:action="@{/signup}" method="post">
-            <input id="username" type="text" name="username" placeholder="Username" required />
-            <input id="name" type="text" name="name" placeholder="Name" required />
-            <input id="surname" type="text" name="surname" placeholder="Surname" required />
-            <select name="country" id="country">
-                <option value="RestTemplate">RestTemplate</option>
-            </select>
-            <input type="email" name="email" id="email" placeholder="Email" required />
-            <input id="password" type="password" name="password" placeholder="Password" required />
-            <input id="password2" type="password" name="password2" placeholder="Repeat Password" required />
-            <input type="date" name="date" id="date">
+        <form th:action="@{/signup}" th:object="${registrationUser}" method="post">
+            <input id="username" type="text" th:field="*{username}" placeholder="Username" required />
+            <input id="name" type="text" th:field="*{name}" placeholder="Name" required />
+            <input id="surname" type="text" th:field="*{surname}" placeholder="Surname" required />
+           <!--  <select name="country" id="country">
+                <option value="spain">spain</option>
+                <option value="united kingdom">united kingdom</option>
+            </select>-->
+            <input type="email" th:field="*{email}" id="email" placeholder="Email" required />
+            <input id="password" type="password" th:field="*{password}" placeholder="Password" required />
+            <input id="repeatPassword" type="password" th:field="*{repeatPassword}" placeholder="Repeat Password" required />
+            <input type="date" th:field="*{dateOfBirth}" id="date">
             <input type="submit" value="Register">
             <a th:href="@{/login}">Cancel</a>
         </form>

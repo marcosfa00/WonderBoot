@@ -14,7 +14,7 @@ public class RegistrationUserDTOAdapter {
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setDateOfBirth(userDTO.getDateOfBirth());
-
+        user.setAdmin(false);
         return user;
     }
 

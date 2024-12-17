@@ -23,4 +23,10 @@ public class RegistrationService {
        wonderbootUserRepository.save(user);
 
     }
+    public void RegisterUser1(WonderbootUser wonderbootUser) {
+        wonderbootUser.setPassword(passwordEncoder.encode(wonderbootUser.getPassword()));
+
+        wonderbootUserRepository.save(wonderbootUser);
+
+    }
 }

@@ -15,7 +15,8 @@ public class SecurityConfig {
         return http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/img/**").permitAll()
-                        .requestMatchers("actuator/prometheus").permitAll()
+                        .requestMatchers("actuator/prometheus").hasRole("ADMIN")
+                        .requestMatchers("actuator/**").hasRole("ADMIN")
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/signup").permitAll()
                                         .anyRequest().authenticated())

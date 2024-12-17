@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -18,8 +19,10 @@ public class WonderbootUser {
     private String name;
     private String surname;
     private String email;
+    @NotEmpty(message = "Password is required")
     private String password;
     private LocalDate dateOfBirth;
+    private boolean admin;
 
     public WonderbootUser() {
     }
@@ -87,5 +90,12 @@ public class WonderbootUser {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

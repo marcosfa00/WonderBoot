@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #0083B0, #00B4DB);
+    background: linear-gradient(45deg, #FFB547, #FF6F61);
     color: #fff;
     display: flex;
     justify-content: center;
@@ -14,21 +14,19 @@ body {
     text-align: center;
     max-width: 600px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    animation: float 3s ease-in-out infinite;
 }
 
 .container h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     margin-bottom: 10px;
-    color: #00E6E6;
-    animation: bounce 2s infinite;
+    animation: fadeIn 2s;
 }
 
 .container p {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
     line-height: 1.8;
 }
@@ -37,27 +35,27 @@ body {
     display: inline-block;
     text-decoration: none;
     font-size: 1.2rem;
-    background: #00B4DB;
+    background: #FF6F61;
     color: white;
     padding: 10px 20px;
     border-radius: 50px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .container a:hover {
-    background: #0083B0;
-    transform: scale(1.1);
+    background: #ff8261;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .background {
@@ -67,6 +65,6 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: url('https://source.unsplash.com/1600x900/?adventure,travel') no-repeat center center/cover;
-    filter: blur(8px) brightness(0.6);
+    background: url('https://source.unsplash.com/1600x900/?travel') no-repeat center center/cover;
+    filter: blur(8px) brightness(0.7);
 }

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied - 403</title>
+    <link rel="stylesheet" th:href="@{/css/error403-style.css}">
+</head>
+
+
+
+<body>
+<div class="background"></div>
+<div class="container">
+    <h1>403</h1>
+    <p><strong>Forbidden!</strong><br> You don't have permission to access this page.<br>Turn back... or face the consequences! 😈</p>
+    <a th:href="@{/login}">Run Away</a>
+</div>
+</body>
+</html>

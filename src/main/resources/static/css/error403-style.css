@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #8B0000, #3D0000);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #FF4500;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.container h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    color: #FF6347;
+    animation: shake 1s infinite;
+}
+
+.container p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.container a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.2rem;
+    background: #FF4500;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 10px rgba(255, 69, 0, 0.7);
+}
+
+.container a:hover {
+    background: #FF6347;
+    transform: scale(1.1);
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5); }
+    50% { box-shadow: 0 6px 20px rgba(255, 69, 0, 0.8); }
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: url('https://source.unsplash.com/1600x900/?fire,danger') no-repeat center center/cover;
+    filter: blur(8px) brightness(0.5);
+}

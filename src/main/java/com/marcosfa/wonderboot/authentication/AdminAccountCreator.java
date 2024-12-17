@@ -1,6 +1,7 @@
 package com.marcosfa.wonderboot.authentication;
 
 import com.marcosfa.wonderboot.web.registration.RegistrationService;
+import com.marcosfa.wonderboot.web.registration.UserExistsException;
 import com.marcosfa.wonderboot.web.registration.WonderbootUser;
 import com.marcosfa.wonderboot.web.registration.dto.RegistrationUserDTO;
 import com.marcosfa.wonderboot.web.registration.dto.RegistrationUserDTOAdapter;
@@ -11,21 +12,32 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
-public class AdminAccoiuntCreator {
+public class AdminAccountCreator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AdminAccoiuntCreator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminAccountCreator.class);
 
-    private AdminAccoiuntCreator(final RegistrationService registrationService, RegistrationUserDTOAdapter registrationUserDTOAdapter) {
+    private AdminAccountCreator(final RegistrationService registrationService) {
 
-        RegistrationUserDTO admin = createAdminUser();
-        WonderbootUser admin1 = registrationUserDTOAdapter.adapt(admin);
+
+        WonderbootUser admin1 = createAdminUser();
         admin1.setAdmin(true);
-        registrationService.RegisterUser1(admin1);
+        try{
+            registrationService.RegisterUser(admin1);
+        } catch (UserExistsException e){
+            LOGGER.debug("admin already exists");
+        }
+
 
     }
 
+    private WonderbootUser createAdminUser() {
+        RegistrationUserDTOAdapter registrationUserDTOAdapter = new RegistrationUserDTOAdapter();
+        WonderbootUser user = registrationUserDTOAdapter.adapt(createAdminUserDTO());
+        user.setAdmin(true);
+        return user;
+    }
 
-    private RegistrationUserDTO createAdminUser(){
+    private RegistrationUserDTO createAdminUserDTO(){
         RegistrationUserDTO user = new RegistrationUserDTO();
         user.setUsername("admin");
         user.setName("Administrador");

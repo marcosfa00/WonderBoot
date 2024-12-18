@@ -36,7 +36,7 @@ public class CustomUserDetails implements UserDetailsService {
         // Roles
         List<SimpleGrantedAuthority> authorities = getAuthorities(user.isAdmin());
         // Log para depurar
-        System.out.println("Usuario: " + username + " con roles: " + authorities);
+        System.out.println("Usuario: " + username + " País: " +user.getCountryCode()+" con roles: " + authorities);
         // return the user with roles
         return new User(user.getUsername(), user.getPassword(), authorities);
     }

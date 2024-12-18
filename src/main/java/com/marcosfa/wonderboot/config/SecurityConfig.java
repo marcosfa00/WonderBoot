@@ -1,5 +1,6 @@
 package com.marcosfa.wonderboot.config;
 
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -10,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableMethodSecurity
+@ConfigurationPropertiesScan
 public class SecurityConfig {
 
     @Bean
@@ -17,8 +19,9 @@ public class SecurityConfig {
         return http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/img/**").permitAll()
-                        .requestMatchers("actuator/prometheus").hasRole("ADMIN")
+                        .requestMatchers("actuator/prometheus").permitAll()
                         .requestMatchers("actuator/**").hasRole("ADMIN")
+                        .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/signup").permitAll()
                                         .anyRequest().authenticated())

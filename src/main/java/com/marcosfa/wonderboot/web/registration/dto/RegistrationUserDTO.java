@@ -19,9 +19,6 @@ public class RegistrationUserDTO {
     private String name;
     @NotBlank
     private String surname;
-    //@NotNull
-    //@Valid
-    //private CountryDTO country;
     @Email
     @NotEmpty(message = "Email is required.")
     private String email;
@@ -31,6 +28,8 @@ public class RegistrationUserDTO {
     private String repeatPassword;
     @NotNull
     private LocalDate dateOfBirth;
+    @NotNull
+    private CountryDTO country;
 
     public @NotBlank String getUsername() {
         return username;
@@ -56,13 +55,13 @@ public class RegistrationUserDTO {
         this.surname = surname;
     }
 
-    /*public @NotNull @Valid CountryDTO getCountry() {
+    public @NotNull CountryDTO getCountry() {
         return country;
     }
 
-    public void setCountry(@NotNull @Valid CountryDTO country) {
+    public void setCountry(@NotNull CountryDTO country) {
         this.country = country;
-    }*/
+    }
 
     public @Email @NotEmpty(message = "Email is required.") String getEmail() {
         return email;

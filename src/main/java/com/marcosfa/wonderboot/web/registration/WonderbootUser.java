@@ -1,5 +1,6 @@
 package com.marcosfa.wonderboot.web.registration;
 
+import com.marcosfa.wonderboot.rest.location.country.Country;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,18 +23,20 @@ public class WonderbootUser {
     @NotEmpty(message = "Password is required")
     private String password;
     private LocalDate dateOfBirth;
+    private String countryCode;
     private boolean admin;
 
     public WonderbootUser() {
     }
 
-    public WonderbootUser(String username, String name, String surname, String email, String password, LocalDate dateOfBirth) {
+    public WonderbootUser(String username, String name, String surname, String email, String password, LocalDate dateOfBirth, String countryCode) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
+        this.countryCode = countryCode;
     }
 
     public Long getId() {
@@ -91,6 +94,15 @@ public class WonderbootUser {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
     public boolean isAdmin() {
         return admin;
     }

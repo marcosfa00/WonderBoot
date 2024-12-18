@@ -2,6 +2,7 @@ package com.marcosfa.wonderboot.rest.location.country.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
+
 public class CountryDTO {
 
     @NotBlank

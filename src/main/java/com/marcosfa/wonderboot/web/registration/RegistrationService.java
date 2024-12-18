@@ -1,6 +1,5 @@
 package com.marcosfa.wonderboot.web.registration;
 
-import com.marcosfa.wonderboot.web.registration.dto.RegistrationUserDTO;
 import com.marcosfa.wonderboot.web.registration.dto.RegistrationUserDTOAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class RegistrationService {
 
     }
 
-    public void RegisterUser(WonderbootUser wonderbootUser) throws UserExistsException {
+    public void registerUser(WonderbootUser wonderbootUser) throws UserExistsException {
         if (emailExists(wonderbootUser)) {
             throw new UserExistsException(UserExistsException.ErrorType.EMAIL_EXISTS);
         }

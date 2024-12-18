@@ -1,5 +1,6 @@
 package com.marcosfa.wonderboot.authentication;
 
+import com.marcosfa.wonderboot.rest.location.country.dto.CountryDTO;
 import com.marcosfa.wonderboot.web.registration.RegistrationService;
 import com.marcosfa.wonderboot.web.registration.UserExistsException;
 import com.marcosfa.wonderboot.web.registration.WonderbootUser;
@@ -22,7 +23,7 @@ public class AdminAccountCreator {
         WonderbootUser admin1 = createAdminUser();
         admin1.setAdmin(true);
         try{
-            registrationService.RegisterUser(admin1);
+            registrationService.registerUser(admin1);
         } catch (UserExistsException e){
             LOGGER.debug("admin already exists");
         }
@@ -44,6 +45,10 @@ public class AdminAccountCreator {
         user.setSurname("Avendaño");
         user.setEmail("admin@marcosfa.com");
         user.setPassword("admin");
+        CountryDTO country = new CountryDTO();
+        country.setCode("USA");
+        country.setName("United States");
+        user.setCountry(country);
         user.setDateOfBirth(LocalDate.of(2000,10,29));
         return user;
     }

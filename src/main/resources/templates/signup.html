@@ -32,12 +32,13 @@
         <div th:classappend="${#fields.hasErrors('country')} ? 'is-invalid'">
             <label th:for="${#ids.next('country.code')}">Country</label>
             <div>
-                <select class="country-dropdown" th:field="*{country.code}" th:classappend="${#fields.hasErrors('country')} ? 'is-invalid'" placeholder="Country">
+                <select class="country-dropdown" th:field="*{country.code}" th:classappend="${#fields.hasErrors('country')} ? 'is-invalid'">
                     <option
                             th:if="*{country.code}"
                             th:value="*{country.code}"
                             th:text="*{country.name}"
                     ></option>
+
                 </select>
                 <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="invalid-feedback"></span>
             </div>
@@ -53,12 +54,15 @@
 </div>
 </body>
 <script>
+    // Escribimos la cadena vacía para que el IDE no lo detecte como un error de sintaxis, aunque cualquier valor posterior a la expresión será sobrescrito
+    const flagsBaseUrl = "[[@{/img/flags}]]" ;
+
     $(document).ready(function() {
         $('.country-dropdown').select2({
         theme: 'bootstrap',
             minimumInputLength: 1,
             ajax: {
-            url: "http://localhost:8081/api/countries",
+            url: "http://localhost:8080/api/countries",
                 dataType: 'json',
                 delay: 250,
                 processResults(data) {

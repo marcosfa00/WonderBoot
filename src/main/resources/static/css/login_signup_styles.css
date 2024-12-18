@@ -1,4 +1,4 @@
-/* Estilos globales */
+/* === Estilos globales === */
 body {
     background-image: url('../img/hot-air-balloons-login.jpg');
     background-size: cover;
@@ -11,7 +11,7 @@ body {
     align-items: center;
 }
 
-/* Contenedor del formulario */
+/* === Contenedor del formulario === */
 .login-container {
     background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
     border-radius: 10px;
@@ -21,7 +21,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Mensaje de error */
+/* === Mensajes de error === */
 .error-message {
     background-color: #f8d7da;
     color: #721c24;
@@ -32,33 +32,32 @@ body {
     text-align: center;
 }
 
-/* Encabezado */
+/* === Encabezado === */
 h2 {
     font-family: helvetica, serif;
     font-weight: bold;
-    font-style: revert;
     text-align: center;
 }
 
-/* Campos de entrada y botón */
+/* === Campos de entrada y botón === */
 input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
 input[type="submit"],
 select {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 12px; /* Más espacio interno */
-    margin: 12px 0; /* Más espacio entre los campos */
-    border: 1px solid #ccc; /* Borde gris claro */
-    border-radius: 5px; /* Bordes redondeados */
-    box-sizing: border-box; /* Incluye el padding en el ancho */
-    font-size: 16px; /* Tamaño de texto más grande */
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
-/* Botón de enviar */
+/* === Botón de enviar === */
 input[type="submit"] {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff;
     font-weight: bold;
     color: white;
     cursor: pointer;
@@ -66,10 +65,10 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+    background-color: #0056b3;
 }
 
-/* Enlace */
+/* === Enlace de cancelación === */
 a {
     display: block;
     text-align: center;
@@ -82,22 +81,47 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Estilo para ajustar el selector de Select2 al formulario */
+/* === Estilos para Select2 === */
+/* Ajustar altura y padding del select */
 .select2-container--bootstrap-5 .select2-selection {
-    height: 48px; /* Ajustar al tamaño de los campos del formulario */
-    border-radius: 5px;
-    font-size: 16px;
+    height: 48px; /* Igual al tamaño de otros inputs */
+    padding: 6px 12px; /* Espaciado interno adecuado */
+    border: 1px solid #ccc; /* Borde similar */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding */
+    font-size: 16px; /* Tamaño del texto */
 }
 
+/* Corrige el padding del texto dentro del select */
+.select2-container--bootstrap-5 .select2-selection__rendered {
+    line-height: 34px; /* Alinea texto verticalmente */
+    padding-left: 8px; /* Espacio a la izquierda */
+}
+
+/* Ajusta el icono desplegable del select */
 .select2-container--bootstrap-5 .select2-selection__arrow {
-    height: 48px; /* Alinear con el campo */
     top: 50%;
     transform: translateY(-50%);
+    right: 8px; /* Ajuste del margen */
 }
 
- .country-flag {
-     width: 22px;
-     height: 16px;
-     margin-right: 8px; /* Para separar un poco la imagen del texto */
-     vertical-align: middle; /* Alinear verticalmente con el texto */
- }
+/* Mejora visual de la bandera en opciones */
+.country-flag {
+    width: 18px;
+    height: 12px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Opciones desplegables */
+.select2-results__option {
+    padding: 6px 12px; /* Espaciado uniforme */
+    font-size: 16px;
+}
+/* Banderas */
+.country-flag {
+    width: 22px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: middle;
+}

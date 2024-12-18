@@ -25,20 +25,21 @@
         <input id="username" type="text" th:field="*{username}" placeholder="Username" required />
         <input id="name" type="text" th:field="*{name}" placeholder="Name" required />
         <input id="surname" type="text" th:field="*{surname}" placeholder="Surname" required />
-        <!--  Connection to the Location API
-        <select name="country" id="country" th:field="*{country.code}">
-            <option th:each="country : ${countries}" th:value="${country.code}" th:text="${country.name}"></option>
-        </select>-->
+
         <div th:classappend="${#fields.hasErrors('country')} ? 'is-invalid'">
+            <!--
+            Made with a placeholder
             <label th:for="${#ids.next('country.code')}">Country</label>
+            -->
             <div>
                 <select class="country-dropdown" th:field="*{country.code}" th:classappend="${#fields.hasErrors('country')} ? 'is-invalid'">
+                    <option value="Country"></option>
                     <option
+
                             th:if="*{country.code}"
                             th:value="*{country.code}"
                             th:text="*{country.name}"
                     ></option>
-
                 </select>
                 <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="invalid-feedback"></span>
             </div>
@@ -59,38 +60,44 @@
 
     $(document).ready(function() {
         $('.country-dropdown').select2({
-        theme: 'bootstrap',
-            minimumInputLength: 1,
+            placeholder: 'Country', // Texto que aparece por defecto
+            allowClear: true, // Habilita el botón de borrar (X)
+            theme: 'bootstrap-5', // Tema Bootstrap
+            width: '100%', // Asegura que ocupa todo el ancho
+            minimumInputLength: 1, // Requiere al menos 1 caracter
             ajax: {
-            url: "http://localhost:8080/api/countries",
+                url: "http://localhost:8080/api/countries",
                 dataType: 'json',
                 delay: 250,
                 processResults(data) {
-                return {
-                    results: data.map(country => ({
-                        id: country.code,
-                        text: country.name
-                    }))
-                };
-            }
-        },
-        templateResult: formatDropdownItem,
+                    return {
+                        results: data.map(country => ({
+                            id: country.code,
+                            text: country.name
+                        }))
+                    };
+                }
+            },
+            templateResult: formatDropdownItem,
             templateSelection: formatDropdownItem
-    });
-
-    function formatDropdownItem(data) {
-        if(!data.id) {
-            return data.text;
-        }
-
-        const $flag = $('<img class="country-flag">').attr({
-            src: `${flagsBaseUrl}/${data.id.toLowerCase()}.svg`,
-            alt: data.text,
-            title: data.text
         });
+        // Forzar que Select2 muestre el placeholder al cargar la página
+        $('#countrySelect').val(null).trigger('change');
 
-        return $('<span></span>').append($flag, data.text);
-    }
+        function formatDropdownItem(data) {
+            if (!data.id) {
+                return data.text; // Si no hay ID, muestra solo el texto
+            }
+
+            // Renderiza bandera + nombre
+            const $flag = $('<img class="country-flag">').attr({
+                src: `${flagsBaseUrl}/${data.id.toLowerCase()}.svg`,
+                alt: data.text,
+                title: data.text
+            });
+
+            return $('<span></span>').append($flag, ` ${data.text}`);
+        }
     });
 </script>
 </html>

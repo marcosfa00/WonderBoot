@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trips - Wonderboot</title>
+    <link rel="stylesheet" th:href="@{/css/trips-style.css}">
+</head>
+<body>
+<header>
+    <ul class="nav-bar">
+        <li class="logo">
+            <img th:src="@{/img/tierra.png}" alt="Logo">
+        </li>
+        <li>Wonderboot</li>
+        <li>Trips</li>
+        <li>Follows</li>
+    </ul>
+    <ul class="profile">
+        <li>Profile</li>
+    </ul>
+</header>
+
+<div class="content">
+    <h1>My Trips</h1>
+    <table class="trips-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Total Cities</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Days</th>
+            <th>Total Cost</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Example rows -->
+        <tr>
+            <td>European Adventure</td>
+            <td>5</td>
+            <td>2024-06-10</td>
+            <td>2024-06-20</td>
+            <td>10</td>
+            <td>$1500</td>
+            <td><button class="edit-btn">Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+    <button class="create-btn">Create New Trip</button>
+</div>
+</body>
+</html>

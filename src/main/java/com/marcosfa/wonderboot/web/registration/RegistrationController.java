@@ -41,7 +41,6 @@ public class RegistrationController {
 
     @GetMapping("/signup")
     public String register(@ModelAttribute("registrationUser") final RegistrationUserDTO registrationUser) {
-
         return "signup";
     }
 
@@ -79,10 +78,7 @@ public class RegistrationController {
         }
     }
 
-    @GetMapping("/admin")
-    public String admin() {
-        return "prueba-admin";
-    }
+
 
 
 

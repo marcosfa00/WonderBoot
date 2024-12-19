@@ -1,0 +1,158 @@
+/* === General styles === */
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Para usar 100% de la altura del viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrado vertical y horizontal */
+    background-image: url('../img/passport-map_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333; /* Texto oscuro y neutro */
+}
+
+/* === Header === */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 0;
+    gap: 15px; /* Espaciado entre los elementos */
+}
+
+.nav-bar .logo img {
+    max-height: 40px; /* Ajusta el tamaño del logo */
+    height: auto;
+}
+
+.profile {
+    display: flex;
+    list-style: none;
+    margin: 0 20px 0 0;
+    padding: 0;
+    gap: 15px; /* Espaciado entre los elementos del perfil */
+    justify-content: flex-end; /* Alinea al extremo derecho */
+    align-items: center; /* Centra verticalmente */
+}
+
+.nav-bar li,
+.profile li {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.nav-bar li:hover,
+.profile li:hover {
+    text-decoration: underline;
+}
+
+/* === Content === */
+.content {
+    padding: 20px;
+    max-width: 1200px;
+    width: 90%; /* Para mantenerlo adaptable */
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Necesario para manejar los elementos internos */
+    top: 50px; /* Evita que esté demasiado cerca del header */
+    transform: translateY(-50px); /* Ajusta un poco más su posición */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-top: 10px; /* Reduce el margen superior */
+    margin-bottom: 20px; /* Conserva espacio con los elementos debajo */
+    color: #333;
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+/* === Buttons === */
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.create-btn {
+    background-color: #333;
+    color: white;
+    float: right; /* Botón alineado a la derecha */
+    margin-bottom: 15px; /* Margen inferior aumentado para separar de la tabla */
+    margin-top: 30px;
+}
+
+.create-btn:hover {
+    background-color: #555;
+}
+
+.edit-btn {
+    background-color: #888;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #666;
+}
+
+/* === Table === */
+.trips-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco casi opaco */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.trips-table th,
+.trips-table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.trips-table thead {
+    background-color: #333;
+    color: white;
+}
+.trips-table thead tr:hover {
+    background-color: initial; /* Sin cambios de fondo */
+    cursor: default; /* El puntero no cambia */
+}
+.trips-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.trips-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+.trips-table tr:hover {
+    background-color: #f0f0f0;
+}

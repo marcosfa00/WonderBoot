@@ -26,7 +26,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/signup").permitAll()
                                         .anyRequest().authenticated())
-                .formLogin(security -> security.loginPage("/login").permitAll())
+                .formLogin(security -> security.loginPage("/login").defaultSuccessUrl("/trips").permitAll())
                 .build();
     }
     @Bean

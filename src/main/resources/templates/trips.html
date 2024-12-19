@@ -21,34 +21,39 @@
     </ul>
 </header>
 
-<div class="content">
-    <h1>My Trips</h1>
-    <table class="trips-table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Total Cities</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Total Days</th>
-            <th>Total Cost</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Example rows -->
-        <tr>
-            <td>European Adventure</td>
-            <td>5</td>
-            <td>2024-06-10</td>
-            <td>2024-06-20</td>
-            <td>10</td>
-            <td>$1500</td>
-            <td><button class="edit-btn">Edit</button></td>
-        </tr>
-        </tbody>
-    </table>
-    <button class="create-btn">Create New Trip</button>
+<div class="main-container">
+    <div class="content">
+        <h1>My Trips</h1>
+        <table class="trips-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total Cities</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Days</th>
+                <th>Total Cost</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Example rows -->
+            <tr>
+                <td>European Adventure</td>
+                <td>5</td>
+                <td>2024-06-10</td>
+                <td>2024-06-20</td>
+                <td>10</td>
+                <td>$1500</td>
+                <td><button class="edit-btn">Edit</button></td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="create-btn">Create New Trip</button>
+    </div>
 </div>
+
+<!-- Footer incluido -->
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

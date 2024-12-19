@@ -1,18 +1,17 @@
-/* === General styles === */
-body {
+/* === General Styles === */
+html, body {
     font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Para usar 100% de la altura del viewport */
+    height: 100%; /* Ocupa todo el viewport */
     display: flex;
-    justify-content: center;
-    align-items: center; /* Centrado vertical y horizontal */
+    flex-direction: column; /* Organización vertical */
     background-image: url('../img/passport-map_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #333; /* Texto oscuro y neutro */
+    color: #333;
 }
 
 /* === Header === */
@@ -23,7 +22,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+    background: rgba(255, 255, 255, 0.8);
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -31,60 +30,65 @@ header {
 
 .nav-bar {
     display: flex;
-    align-items: center; /* Asegura que los elementos estén alineados verticalmente */
+    align-items: center;
     list-style: none;
-    margin: 0 0 0 20px;
+    margin: 0;
     padding: 0;
-    gap: 15px; /* Espaciado entre los elementos */
+    gap: 15px;
 }
 
 .nav-bar .logo img {
-    max-height: 40px; /* Ajusta el tamaño del logo */
+    max-height: 40px;
     height: auto;
 }
 
 .profile {
     display: flex;
     list-style: none;
-    margin: 0 20px 0 0;
+    margin: 0;
     padding: 0;
-    gap: 15px; /* Espaciado entre los elementos del perfil */
-    justify-content: flex-end; /* Alinea al extremo derecho */
-    align-items: center; /* Centra verticalmente */
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.nav-bar li,
-.profile li {
+.nav-bar li, .profile li {
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
     color: #333;
 }
 
-.nav-bar li:hover,
-.profile li:hover {
+.nav-bar li:hover, .profile li:hover {
     text-decoration: underline;
+}
+
+/* === Main Container === */
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px; /* Ajusta para evitar que quede detrás del header */
+    padding-bottom: 60px; /* Espacio para el footer */
 }
 
 /* === Content === */
 .content {
     padding: 20px;
     max-width: 1200px;
-    width: 90%; /* Para mantenerlo adaptable */
-    background: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
+    width: 90%;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; /* Necesario para manejar los elementos internos */
-    top: 50px; /* Evita que esté demasiado cerca del header */
-    transform: translateY(-50px); /* Ajusta un poco más su posición */
+    text-align: center;
 }
 
 h1 {
     font-size: 2.5em;
-    margin-top: 10px; /* Reduce el margen superior */
-    margin-bottom: 20px; /* Conserva espacio con los elementos debajo */
+    margin: 10px 0 20px 0;
     color: #333;
-    text-align: left; /* Alinea el texto a la izquierda */
 }
 
 /* === Buttons === */
@@ -101,9 +105,8 @@ button {
 .create-btn {
     background-color: #333;
     color: white;
-    float: right; /* Botón alineado a la derecha */
-    margin-bottom: 15px; /* Margen inferior aumentado para separar de la tabla */
-    margin-top: 30px;
+    float: right;
+    margin: 30px 0 15px 0;
 }
 
 .create-btn:hover {
@@ -123,14 +126,13 @@ button {
 .trips-table {
     width: 100%;
     border-collapse: collapse;
-    background: rgba(255, 255, 255, 0.9); /* Fondo blanco casi opaco */
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.trips-table th,
-.trips-table td {
+.trips-table th, .trips-table td {
     padding: 12px;
     text-align: left;
     font-size: 14px;
@@ -140,19 +142,25 @@ button {
     background-color: #333;
     color: white;
 }
-.trips-table thead tr:hover {
-    background-color: initial; /* Sin cambios de fondo */
-    cursor: default; /* El puntero no cambia */
-}
-.trips-table tbody tr:hover {
-    background-color: #f0f0f0;
-}
 
 .trips-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-
 .trips-table tr:hover {
     background-color: #f0f0f0;
+}
+
+/* === Footer === */
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
 }

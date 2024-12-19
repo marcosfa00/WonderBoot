@@ -3,6 +3,7 @@ package com.marcosfa.wonderboot.config;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
@@ -25,8 +26,10 @@ public class SecurityConfig {
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/signup").permitAll()
+                        .requestMatchers("/trips").hasRole("USER")
                                         .anyRequest().authenticated())
                 .formLogin(security -> security.loginPage("/login").defaultSuccessUrl("/trips").permitAll())
+                .rememberMe(Customizer.withDefaults())
                 .build();
     }
     @Bean

@@ -4,21 +4,26 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    min-height: 100vh;  /* Asegura que el cuerpo ocupe toda la altura de la ventana */
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;  /* El contenido está en columna */
+    justify-content: flex-start;  /* El contenido comienza desde la parte superior */
+    align-items: center;  /* Centra todo el contenido horizontalmente */
+    padding: 0 20px;  /* Añadido padding para evitar que el contenido toque los bordes */
+    overflow-x: hidden;  /* Evita el desplazamiento horizontal */
 }
 
 /* === Contenedor del formulario === */
 .login-container {
-    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     padding: 30px;
     width: 100%;
-    max-width: 600px; /* Aumentar ancho máximo del formulario */
+    max-width: 600px;  /* Establece un ancho máximo para el formulario */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;  /* Separa el formulario un poco desde la parte superior */
+    text-align: center;  /* Centra el contenido dentro del formulario */
 }
 
 /* === Mensajes de error === */
@@ -37,6 +42,7 @@ h2 {
     font-family: helvetica, serif;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 20px;  /* Espacio debajo del título */
 }
 
 /* === Campos de entrada y botón === */
@@ -54,6 +60,8 @@ select {
     box-sizing: border-box;
     font-size: 16px;
 }
+
+
 
 /* === Botón de enviar === */
 input[type="submit"] {
@@ -80,7 +88,6 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
 /* === Estilos para Select2 === */
 /* Ajustar altura y padding del select */
 .select2-container--bootstrap-5 .select2-selection {
@@ -124,4 +131,19 @@ a:hover {
     height: 16px;
     margin-right: 8px;
     vertical-align: middle;
+}
+/* === Footer === */
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    position: fixed;  /* Fijar el footer en la parte inferior */
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    margin-top: auto;  /* Hace que el footer se desplace al final de la página si hay poco contenido */
 }

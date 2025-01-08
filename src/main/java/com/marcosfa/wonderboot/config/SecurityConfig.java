@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .requestMatchers("/signup").permitAll()
                         .requestMatchers("/trips").hasRole("USER")
                                         .anyRequest().authenticated())
-                .formLogin(security -> security.loginPage("/login").defaultSuccessUrl("/trips").permitAll())
+                .formLogin(security -> security.loginPage("/login").defaultSuccessUrl("/trips", true).permitAll())
                 .rememberMe(Customizer.withDefaults())
                 .build();
     }

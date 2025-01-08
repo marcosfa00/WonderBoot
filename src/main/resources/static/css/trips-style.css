@@ -35,8 +35,8 @@ header {
     margin: 0;
     padding: 0;
     gap: 15px;
+    flex: 1; /* Ocupa todo el espacio restante */
 }
-
 .nav-bar .logo img {
     max-height: 40px;
     height: auto;
@@ -44,23 +44,42 @@ header {
 
 .profile {
     display: flex;
+    align-items: center;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 40px 0 0;
     gap: 15px;
-    justify-content: flex-end;
-    align-items: center;
+    white-space: nowrap; /* Evitar saltos de línea */
 }
+
 
 .nav-bar li, .profile li {
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
     color: #333;
+    text-align: center;
 }
 
 .nav-bar li:hover, .profile li:hover {
     text-decoration: underline;
+}
+
+/* Manejo de desbordamientos en dispositivos pequeños */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; /* Permite que el header se reorganice */
+    }
+
+    .nav-bar {
+        flex: none; /* Elimina el estiramiento en pantallas pequeñas */
+        flex-wrap: wrap;
+        justify-content: center; /* Centrar elementos en móviles */
+    }
+
+    .profile {
+        margin-top: 10px; /* Separar del navbar */
+    }
 }
 
 /* === Main Container === */

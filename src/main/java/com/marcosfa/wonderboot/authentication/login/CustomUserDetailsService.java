@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -26,8 +27,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        WonderbootUser user = wonderbootUserRepository.findByProfileUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("UserName not found"));
+        WonderbootUser user = new WonderbootUser();
+        if (username.contains("@")){
+            user = wonderbootUserRepository.findByProfileEmail(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        }else{
+            user = wonderbootUserRepository.findByProfileUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        }
+
+
         // Roles
         List<SimpleGrantedAuthority> authorities = getAuthorities(user.isAdmin());
         // Log para depurar

@@ -2,52 +2,28 @@ package com.marcosfa.wonderboot.authentication.login;
 
 
 
-import com.marcosfa.wonderboot.web.registration.WonderbootUser;
-import com.marcosfa.wonderboot.web.registration.WonderbootUserRepository;
-
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import com.marcosfa.wonderboot.web.profile.Profile;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+
+import java.util.Collection;
 
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+public class CustomUserDetails extends User {
 
-@Component
-public class CustomUserDetails implements UserDetailsService {
+    private final Profile profile;
 
-    protected static final String USER_ROLE = "ROLE_USER";
-    protected static final String ADMIN_ROLE = "ROLE_ADMIN";
-    private final WonderbootUserRepository wonderbootUserRepository;
-
-    public CustomUserDetails(WonderbootUserRepository wonderbootUserRepository) {
-        this.wonderbootUserRepository = wonderbootUserRepository;
+    public CustomUserDetails(final Profile profile, final String password, final Collection<? extends GrantedAuthority> authorities) {
+        this(profile, password, true, true, true, true, authorities);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        WonderbootUser user = wonderbootUserRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("UserName not found"));
-        // Roles
-        List<SimpleGrantedAuthority> authorities = getAuthorities(user.isAdmin());
-        // Log para depurar
-        System.out.println("Usuario: " + username + " País: " +user.getCountryCode()+" con roles: " + authorities);
-        // return the user with roles
-        return new User(user.getUsername(), user.getPassword(), authorities);
+    public CustomUserDetails(final Profile profile, final String password, final boolean enabled, final boolean accountNonExpired, final boolean credentialsNonExpired, final boolean accountNonLocked, final Collection<? extends GrantedAuthority> authorities) {
+        super(profile.getUsername(), password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+        this.profile = profile;
     }
 
-    private List<SimpleGrantedAuthority> getAuthorities(final boolean role) {
-    return role ?toAuthorities(USER_ROLE, ADMIN_ROLE) : toAuthorities(USER_ROLE);
+    public Profile getProfile() {
+        return this.profile;
     }
 
-    private List<SimpleGrantedAuthority> toAuthorities(String... authorities) {
-        return Arrays.stream(authorities)
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-    }
 }

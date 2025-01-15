@@ -29,11 +29,11 @@ public class RegistrationService {
     }
 
     public boolean emailExists(WonderbootUser wonderbootUser) {
-        return wonderbootUserRepository.findByEmail(wonderbootUser.getEmail()).isPresent();
+        return wonderbootUserRepository.findByProfileEmail(wonderbootUser.getProfile().getEmail()).isPresent();
     }
 
     public boolean usernameExists(WonderbootUser wonderbootUser) {
-        return wonderbootUserRepository.findByUsername(wonderbootUser.getUsername()).isPresent();
+        return wonderbootUserRepository.findByProfileUsername(wonderbootUser.getProfile().getUsername()).isPresent();
     }
 
 

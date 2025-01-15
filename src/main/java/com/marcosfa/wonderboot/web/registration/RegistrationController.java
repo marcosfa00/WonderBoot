@@ -54,7 +54,7 @@ public class RegistrationController {
                     .map(countryDTOAdapter::adaptCountry)
                     .ifPresent(registrationUser::setCountry);
 
-            return "registration";
+            return "signup";
         }
         try {
             WonderbootUser wonderbootUser = registrationUserDTOAdapter.adapt(registrationUser);
@@ -62,7 +62,7 @@ public class RegistrationController {
         } catch (UserExistsException e) {
             String errorField = getErrorField(e.getErrorType());
             bindingResult.addError(new FieldError("registrationUser", errorField, e.getErrorType().name()));
-            return "registration";
+            return "signup";
         }
         return "redirect:/login?registered";
     }

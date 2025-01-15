@@ -1,10 +1,8 @@
 package com.marcosfa.wonderboot.web.registration;
 
 import com.marcosfa.wonderboot.rest.location.country.Country;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.marcosfa.wonderboot.web.profile.Profile;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
 import java.time.LocalDate;
@@ -16,27 +14,23 @@ public class WonderbootUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
-    private String name;
-    private String surname;
-    private String email;
     @NotEmpty(message = "Password is required")
     private String password;
-    private LocalDate dateOfBirth;
-    private String countryCode;
+    @JoinColumn(name = "profile_Id")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    private Profile profile;
+    private LocalDate createdDate;
     private boolean admin;
 
     public WonderbootUser() {
     }
 
-    public WonderbootUser(String username, String name, String surname, String email, String password, LocalDate dateOfBirth, String countryCode) {
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
+    public WonderbootUser(Long id, String password, Profile profile, LocalDate createdDate, boolean admin) {
+        this.id = id;
         this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.countryCode = countryCode;
+        this.profile = profile;
+        this.createdDate = createdDate;
+        this.admin = admin;
     }
 
     public Long getId() {
@@ -47,60 +41,28 @@ public class WonderbootUser {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
+    public @NotEmpty(message = "Password is required") String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@NotEmpty(message = "Password is required") String password) {
         this.password = password;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
-    public String getCountryCode() {
-        return countryCode;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
     public boolean isAdmin() {
